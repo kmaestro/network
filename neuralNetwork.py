@@ -20,8 +20,21 @@ class neuralNetwork:
         # функция активации
         self.activation_function = lambda x: scipy.special.expit(x)
         pass
+        # тренировка сети
     def train(self, inputs_list, targets_list):
-        
+        # приоброзование значение в двухмерный массив
+        inputs = numpy.array(inputs_list, ndmin=2).T;
+        targets = numpy.array(targets_list, ndmin=2).T;
+
+        # рассчитать исходящие данные скрытого слоя
+        hidden_inputs = numpy.dot(self.wih, input);
+        # рассчитать входные данные скрытого слоя
+        hidden_outputs = self.activation_function(hidden_inputs);
+
+        # рассчитать входные данные выходного слоя
+        final_inputs = numpy.dot(self.wih, hidden_outputs);
+        # рассчитать исходящие данные выходного слоя
+        final_outputs = self.activation_function(final_inputs);
         pass
 
     # опрос нейроной сети
@@ -32,6 +45,7 @@ class neuralNetwork:
         
         # рассчитать входные данные скрытого слоя
         hidden_inputs = numpy.dot(self.wih, inputs)
+        print(hidden_inputs);
         # рассчитать исходящие данные скрытого слоя
         hidden_outputs = self.activation_function(hidden_inputs)
 
